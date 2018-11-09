@@ -2,8 +2,7 @@
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand">
-          Site title
-        </a>
+Slim Souissi        </a>
       </div>
       <div>
         <ul class="nav navbar-nav">
@@ -11,14 +10,15 @@
         </ul>
   
         <ul class="nav navbar-nav navbar-right">
-          <li><a>Login</a> </li>
-          <li><a>Register</a> </li>
-          <li><a>Logout</a> </li>
+          <li *ngIf="!isLoggedIn()"><a routerLink = '/auth/login' >Login</a> </li>
+          <li *ngIf="!isLoggedIn()"><a routerLink = '/auth/register'>Register</a> </li>
+          <li *ngIf="isLoggedIn()" ><a (click)='logout()'>Logout</a> </li>
         </ul>
       </div>
     </div>
   </nav>
   
   <div class="container">
-      <<router-outlet></router-outlet>
+    <app-notify></app-notify>
+      <router-outlet></router-outlet>
   </div>
