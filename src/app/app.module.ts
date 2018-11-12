@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 
 import {HttpModule} from '@angular/http' ;
 import {HttpClientModule} from '@angular/common/http';
@@ -23,6 +23,16 @@ import { NotifyService } from './services/notify.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UserService } from './services/user.service';
 import { PrettyDatePipe } from './pipes/pretty-date.pipe';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressHttpModule } from '@ngx-progressbar/http';
+import { NgProgressRouterModule } from '@ngx-progressbar/router';
+import { WallComponent } from './profile/wall/wall.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { FollowComponent } from './profile/follow/follow.component';
+import { FollowService } from './services/follow.service';
+import { CreateJokeComponent } from './create-joke/create-joke.component';
+import { JokesService } from './services/jokes.service';
+import { JokeComponent } from './joke/joke.component';
 
 @NgModule({
   declarations: [
@@ -32,21 +42,32 @@ import { PrettyDatePipe } from './pipes/pretty-date.pipe';
     LoginComponent,
     NotifyComponent,
     ProfileComponent,
-    PrettyDatePipe
+    PrettyDatePipe,
+    WallComponent,
+    EditProfileComponent,
+    FollowComponent,
+    CreateJokeComponent,
+    JokeComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
     FormsModule,
     HttpModule,
-
+    NgProgressModule.forRoot(),
+    NgProgressRouterModule.forRoot(),
+    NgProgressHttpModule.forRoot(),
+    ReactiveFormsModule
   ],
+
   providers: [
     AuthService ,
     AuthGuard ,
     AuthedGuard ,
     NotifyService ,
-    UserService],
+    UserService ,
+    FollowService ,
+    JokesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

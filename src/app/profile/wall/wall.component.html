@@ -1,0 +1,11 @@
+<div *ngIf="jokes">
+  <div class="panel panel-default" *ngFor="let joke of jokes">
+    <div class="panel-heading">
+      {{joke.title}}
+    </div>
+
+    <div class="panel-body">
+      {{joke.joke}}
+    </div> 
+  </div> 
+</div> 

@@ -62,7 +62,7 @@ export class AuthService  {
                 let user = response.json().user.data;
 
                 let userData = new UserData(token , user ) ;
-
+                
                 return userData ;
             })
             ;
