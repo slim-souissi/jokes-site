@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <div class="navbar-header">
@@ -7,6 +8,21 @@ Slim Souissi        </a>
       <div>
         <ul class="nav navbar-nav">
           <li><a>All jokes</a></li>
+          <li *ngIf="isLoggedIn() && user" [routerLink]="['user/profile' , user.id]" >
+            <a role="button"> 
+              My profile
+            </a>
+            </li>
+            <li *ngIf="isLoggedIn() && user" [routerLink]="['user/profile' , 1]" >
+              <a role="button"> 
+                User 1 Profile
+              </a>
+              </li>
+              <li *ngIf="isLoggedIn() && user" [routerLink]="['user/profile' , 2]" >
+                <a role="button"> 
+                  User 2 Profile
+                </a>
+                </li>
         </ul>
   
         <ul class="nav navbar-nav navbar-right">

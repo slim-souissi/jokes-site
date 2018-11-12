@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { User } from './classes/User';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,10 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-constructor(private authService: AuthService) {}
+  user: User ;
+constructor(private authService: AuthService) {
+  this.user = this.authService.getAuthUser() ;
+}
 
 
 isLoggedIn(): boolean {
@@ -16,5 +20,6 @@ isLoggedIn(): boolean {
 logout() {
   this.authService.logout();
 }
+
 
 }
