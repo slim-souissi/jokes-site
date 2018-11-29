@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-wall',
@@ -11,19 +12,19 @@ export class WallComponent implements OnInit {
 
   public jokes ;
   public id: number ;
-
+  @Input() joke ;
   constructor(
     private userService: UserService ,
-    private router: ActivatedRoute) { }
+    private router: ActivatedRoute ,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.router.params.subscribe((params) => {
       this.id = +params['id'] ;
       this.getUserWall() ;
     });
-
-    
   }
+
 
   getUserWall() {
      this.userService.getUserWall(this.id)
@@ -31,6 +32,16 @@ export class WallComponent implements OnInit {
                   this.jokes = resp.data ;
                     }
      );
+  }
+
+  jokeDeleted(jokeId) {
+    let joke = this.jokes.find((j) => {
+      return jokeId == j.id ;
+    }) ;
+
+    let jokeIndex = this.jokes.indexOf(joke) ;
+
+   this.jokes.splice( jokeIndex , 1) ;
   }
 
 }
