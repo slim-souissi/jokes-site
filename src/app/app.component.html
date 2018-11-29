@@ -7,20 +7,19 @@ Slim Souissi        </a>
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <li><a>All jokes</a></li>
           <li *ngIf="isLoggedIn() && user" [routerLink]="['user/profile' , user.id]" >
             <a role="button"> 
               My profile
             </a>
             </li>
-            <li *ngIf="isLoggedIn() && user" [routerLink]="['user/profile' , 1]" >
+            <li *ngIf="isLoggedIn() && user" [routerLink]="['/dashboard']" >
               <a role="button"> 
-                User 1 Profile
+                Dashboard
               </a>
               </li>
-              <li *ngIf="isLoggedIn() && user" [routerLink]="['user/profile' , 2]" >
+              <li *ngIf="isLoggedIn() && user" [routerLink]="['/create/joke']" >
                 <a role="button"> 
-                  User 2 Profile
+                  Create a joke
                 </a>
                 </li>
         </ul>
